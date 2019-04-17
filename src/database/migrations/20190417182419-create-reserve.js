@@ -2,7 +2,7 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('appointments', {
+    return queryInterface.createTable('reserves', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -20,12 +20,24 @@ module.exports = {
         onDelete: 'CASCADE',
         allowNull: false
       },
-      provider_id: {
+      restaurant_id: {
         type: Sequelize.INTEGER,
         references: { model: 'users', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
         allowNull: false
+      },
+      duration: {
+        allowNull: true,
+        type: Sequelize.FLOAT
+      },
+      total_price: {
+        allowNull: true,
+        type: Sequelize.FLOAT
+      },
+      people_quantity: {
+        allowNull: false,
+        type: Sequelize.INTEGER
       },
       created_at: {
         allowNull: false,
@@ -39,6 +51,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('appointments')
+    return queryInterface.dropTable('reserves')
   }
 }
