@@ -26,7 +26,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      restaurant: {
+      provider: {
         allowNull: false,
         defaultValue: false,
         type: Sequelize.BOOLEAN

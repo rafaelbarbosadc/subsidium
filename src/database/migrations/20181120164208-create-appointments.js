@@ -2,7 +2,7 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('reserves', {
+    return queryInterface.createTable('appointments', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -27,18 +27,6 @@ module.exports = {
         onDelete: 'CASCADE',
         allowNull: false
       },
-      duration: {
-        allowNull: true,
-        type: Sequelize.FLOAT
-      },
-      total_price: {
-        allowNull: true,
-        type: Sequelize.FLOAT
-      },
-      people_quantity: {
-        allowNull: false,
-        type: Sequelize.INTEGER
-      },
       created_at: {
         allowNull: false,
         type: Sequelize.DATE
@@ -51,6 +39,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('reserves')
+    return queryInterface.dropTable('appointments')
   }
 }
