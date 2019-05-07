@@ -14,12 +14,18 @@ class DashboardController {
   }
 
   async saveProfile (req, res) {
-    const { name, email } = req.body
+    const { name, email, table_quantity, people_quantity } = req.body
 
     const userData = await User.update(
-      { name, email },
+      {
+        name,
+        email,
+        people_quantity,
+        table_quantity
+      },
       { where: { id: req.session.user.id } }
     )
+
     const providers = await User.findAll({ where: { provider: true } })
 
     return res.render('dashboard', { providers })

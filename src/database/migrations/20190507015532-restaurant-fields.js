@@ -5,11 +5,13 @@ module.exports = {
     return Promise.all([
       (queryInterface.addColumn('users', 'people_quantity', {
         type: Sequelize.INTEGER,
-        allowNull: true
+        allowNull: true,
+        defaultValue: 0
       }),
       queryInterface.addColumn('users', 'table_quantity', {
         type: Sequelize.INTEGER,
-        allowNull: true
+        allowNull: true,
+        defaultValue: 0
       }))
     ])
   },

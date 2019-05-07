@@ -9,7 +9,9 @@ module.exports = (sequelize, DataTypes) => {
       avatar: DataTypes.STRING,
       password: DataTypes.VIRTUAL,
       password_hash: DataTypes.STRING,
-      provider: DataTypes.BOOLEAN
+      provider: DataTypes.BOOLEAN,
+      people_quantity: DataTypes.INTEGER,
+      table_quantity: DataTypes.INTEGER
     },
     {
       hooks: {
