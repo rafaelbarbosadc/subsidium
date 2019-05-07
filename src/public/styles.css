@@ -318,3 +318,23 @@ ul.providers {
 .main-wrapper .content form button:hover {
   background: #634dac;
 }
+
+.main-logo {
+  align-self: center;
+}
+
+.btn-settings {
+  align-self: flex-end;
+  cursor: pointer;
+  background: transparent;
+}
+
+.btn-back {
+  align-self: flex-start;
+  cursor: pointer;
+  background: transparent;
+}
+
+#edit .edit-input {
+  border: 1px solid #634dac;
+}

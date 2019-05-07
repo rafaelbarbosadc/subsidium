@@ -1,0 +1,26 @@
+{% extends "_layouts/default.njk" %}
+
+{% block body %}
+  <div class="content" id="edit">
+    <a class="btn-back" style="background: none" href="/app/dashboard/"><img src="/images/arrow-left.svg" width="20" height="20" ></a>
+    <img src="/files/{{ user.avatar }}" alt="Logo" class="main-avatar">
+    <strong>Editar Perfil</strong>
+
+    <form action="/app/user/" method="post">
+      <label for="name"><strong>Nome</strong></label>
+      <input type="text" class="edit-input" name="name" id="name" value="{{ user.name }}">
+
+      <label for="email"><strong>E-mail</strong></label>
+      <input type="text" class="edit-input" name="email" id="email" value="{{ user.email }}">
+      {% if (user.provider === true) %}
+          <label for="table_quantity"><strong>Quantidade de mesas</strong></label>
+          <input type="number" class="edit-input" name="table_quantity" id="table_quantity" value="{{ user.table_quantity }}">
+
+          <label for="people_quantity"><strong>Quantidade de pessoas</strong></label>
+          <input type="number" class="edit-input" name="people_quantity" id="people_quantity" value="{{ user.people_quantity }}">
+      {% endif %}
+
+      <button type="submit">Salvar</button>
+    </form>
+  </div>
+{% endblock %}

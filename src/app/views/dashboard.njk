@@ -2,9 +2,10 @@
 
 {% block body %}
   <div class="content">
+    <a class="btn-settings" style="background: none" href="/app/profile/"><img src="/images/settings.svg" width="20" height="20" ></a>
     <img src="/files/{{ user.avatar }}" alt="Logo" class="main-avatar">
     <strong>Olá, {{ user.name }}</strong>
-    <p>Inicie um agendamento escolhendo um profissional abaixo:</p>
+    <p>Agende uma reserva escolhendo um restaurante abaixo:</p>
 
     <ul class="providers">
       {% for provider in providers %}

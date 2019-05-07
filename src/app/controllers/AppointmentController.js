@@ -2,7 +2,7 @@ const { User, Appointment } = require('../models')
 
 class AppointmentController {
   async create (req, res) {
-    const provider = await User.findByPk(req.params.provider)
+    const provider = await User.findByPk(req.session.user)
 
     return res.render('appointments/create', { provider })
   }
