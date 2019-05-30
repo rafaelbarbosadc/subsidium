@@ -1,0 +1,23 @@
+{% extends "_layouts/default.njk" %}
+
+{% block body %}
+  <div class="content">
+    <strong>Minhas reservas</strong>
+    <p>Veja abaixo o histórico de suas reservas</p>
+
+    <div style="overflow: auto; height: 400px">
+    <ul class="providers">
+      {% for appointment in appointments %}
+        <li class="provider">
+          <div>
+            <img src="/files/{{ appointment.avatar }}" />
+            <strong>{{ appointment.name }} <br>  {{ appointment.date.toLocaleString() | date('DD/MM/YYYY') }} <br> {{ appointment.date.toLocaleString() | date("HH:mm") }} </strong>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+    </div>
+
+    <a href="/app/dashboard" class="logout">Voltar</a>
+  </div>
+{% endblock %}
