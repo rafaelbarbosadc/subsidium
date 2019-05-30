@@ -3,14 +3,14 @@
 {% block body %}
   <div class="content">
     <strong>Seus agendamentos</strong>
-    <p>Veja abaixo a lista de agendamentos que você tem para hoje:</p>
+    <p>Veja abaixo a lista de agendamentos que você ainda tem para esta semana:</p>
 
     <ul class="providers">
       {% for appointment in appointments %}
         <li class="provider">
           <div>
             <img src="/files/{{ appointment.user.avatar }}" />
-            <strong>{{ appointment.user.name }} <br> {{ appointment.date | date("HH:mm") }}</strong>
+            <strong>{{ appointment.user.name }} <br> {{ appointment.date.toLocaleString()  | date("HH:mm") }} <br> {{ appointment.date.toLocaleString()  | date('DD/MM/YYYY') }}, {{ daysWeek[appointment.date.getDay()] }} <br> {{appointment.people_quantity}} Pessoas</strong>
           </div>
         </li>
       {% endfor %}
