@@ -12,12 +12,9 @@ class AppointmentController {
     const { id } = req.session.user
     const { provider } = req.params
     const { date, duration, people_quantity } = req.body
-
-    
     const duration_int = parseInt(duration[1])
     const date_end = moment(date).add(duration_int,'hours')
     
-
     const count_appointment = await Appointment.count({
       where: {
         provider_id: provider,
@@ -66,11 +63,29 @@ class AppointmentController {
         //req.flash('error','Sem vagas suficientes')
       }
     }
-  }else{
-   // req.flash('error','Sem vagas sufucientes')
-  }
+
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+             user: EMAIL,
+             pass: PASSWORD
+         }
+     });
+
+     const mailOptions = {
+      from: EMAIL,
+      to: [user.email, provider.email].join(), 
+      subject: 'Confirmação de Agendamento', 
+      html: '<p>Olá<br />Só passamos para avisá-lo de que seu agendamento foi efetuado com sucesso!<br />Este é um email automático, favor não respondê-lo.</p>'
+    };
+
+    let info = await transporter.sendMail(mailOptions);
+
+    console.log("Mensagem enviada: %s", info.messageId);
+
     return res.redirect('/app/dashboard')
   }
+
+}
 }
 
-module.exports = new AppointmentController()
