@@ -12,27 +12,21 @@ class AppointmentController {
     const { date, duration, people_quantity } = req.body
 
     const count_appointment = await Appointment.count({
-      where:{
+      where: {
         provider_id: provider,
         date: date
       }
     })
-  
     const restaurant = await User.findByPk(provider)
     const total_people = restaurant.people_quantity
     
     if((count_appointment == 0 ) && (total_people >= people_quantity)){
       await Appointment.create({
-        user_id: id,
-        provider_id: provider,
-        date,
-        duration,
-        people_quantity:people_quantity
+        people_quantity: people_quantity
       })
-    }else{
-
-      const people_reserved = await Appointment.sum('people_quantity',{
-        where:{
+    } else {
+      const people_reserved = await Appointment.sum('people_quantity', {
+        where: {
           provider_id: provider,
           date: date
         }
@@ -49,7 +43,7 @@ class AppointmentController {
           provider_id: provider,
           date,
           duration,
-          people_quantity:people_quantity
+          people_quantity: people_quantity
         })
       }
     }

@@ -45,4 +45,6 @@ routes.get('/app/available/:provider', AvailableController.index)
 
 routes.get('/app/schedule', ScheduleController.index)
 
+routes.get('/app/history', ScheduleController.history)
+
 module.exports = routes

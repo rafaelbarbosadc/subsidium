@@ -4,24 +4,38 @@
   <div class="content">
     <a class="btn-settings" style="background: none" href="/app/profile/"><img src="/images/settings.svg" width="20" height="20" ></a>
     <img src="/files/{{ user.avatar }}" alt="Logo" class="main-avatar">
+
+
     <strong>Olá, {{ user.name }}</strong>
+    {% if (user.provider === true) %}
+      <strong>Hoje você tem {{ reserveQuantity }} reservas e {{ peopleQuantity }} pessoas no seu restaurante!</strong>
+    {% endif %}
+    {% if (user.provider === false) %}
     <p>Agende uma reserva escolhendo um restaurante abaixo:</p>
 
-    <ul class="providers">
-      {% for provider in providers %}
-        <li class="provider">
-          <div>
-            <img src="/files/{{ provider.avatar }}" />
-            <strong>{{ provider.name }}</strong>
-          </div>
-          <a href="/app/appointments/new/{{ provider.id }}">+</a>
-        </li>
-      {% endfor %}
-    </ul>
+    <div style="overflow: auto; height: 400px">
+      <ul class="providers">
+        {% for provider in providers %}
+          <li class="provider">
+            <div>
+              <img src="/files/{{ provider.avatar }}" />
+              <strong>{{ provider.name }}</strong>
+            </div>
+            <a href="/app/appointments/new/{{ provider.id }}">+</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+     {% endif %}
 
     {% if (user.provider === true) %}
       <a href="/app/schedule">Meus agendamentos</a>
     {% endif %}
+
+     {% if (user.provider === false) %}
+      <a style="margin-top: 20px" href="/app/history">Minhas reservas</a>
+    {% endif %}
+
     <a href="/app/logout" class="logout">Sair</a>
   </div>
 {% endblock %}
