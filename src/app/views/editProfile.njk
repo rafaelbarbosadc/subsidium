@@ -18,6 +18,11 @@
 
           <label for="people_quantity"><strong>Quantidade de pessoas</strong></label>
           <input type="text" class="edit-input" name="people_quantity" id="people_quantity" value="{{ user.people_quantity }}">
+
+          <label><strong>Horário de Funcionamento</strong></label>
+          <input type="text" class="edit-input" name="operating_start" id="operating_start" value="{{ user.operating_start }}">
+          <input type="text" class="edit-input" name="operating_end" id="operating_end" value="{{ user.operating_end }}">
+
       {% endif %}
 
       <button type="submit">Salvar</button>

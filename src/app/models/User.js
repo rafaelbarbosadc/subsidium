@@ -11,7 +11,9 @@ module.exports = (sequelize, DataTypes) => {
       password_hash: DataTypes.STRING,
       provider: DataTypes.BOOLEAN,
       people_quantity: DataTypes.INTEGER,
-      table_quantity: DataTypes.INTEGER
+      table_quantity: DataTypes.INTEGER,
+      operating_start: DataTypes.TIME,
+      operating_end: DataTypes.TIME
     },
     {
       hooks: {
