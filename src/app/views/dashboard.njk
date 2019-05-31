@@ -5,6 +5,7 @@
     <a class="btn-settings" style="background: none" href="/app/profile/"><img src="/images/settings.svg" width="20" height="20" ></a>
     <img src="/files/{{ user.avatar }}" alt="Logo" class="main-avatar">
 
+  {% include "_partials/flash.njk" %}
 
     <strong>Olá, {{ user.name }}</strong>
     {% if (user.provider === true) %}
