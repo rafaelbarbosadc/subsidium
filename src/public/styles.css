@@ -345,3 +345,14 @@ ul.providers {
 .content {
   margin-top: -50px;
 }
+
+.select-duration {
+  height: 40px;
+  padding: 0 15px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #444;
+  width: 100%;
+}
